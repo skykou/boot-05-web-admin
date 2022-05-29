@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="id" placeholder="请输入编号" v-model="student.id"/><br/>
+        <input type="text" name="name" placeholder="请输入姓名" v-model="student.name"/><br/>
+        <select name="age" v-model="student.age">
+            <option v-for="n in 43" :value="n+17">{{n+17}}</option>
+        </select><br/>
+        <input type="radio" name="gender" value="男" v-model="student.gender"/>男
+        <input type="radio" name="gender" value="女" v-model="student.gender"/>女<br/>
+        <select name="addr" v-model="student.addr">
+            <option v-for="city in cities" :value="city">{{city}}</option>
+        </select><br/>
+        个人爱好<br/>
+        <input type="checkbox" v-model="student.hobbies" name="hobbies" value="羽毛球"/>羽毛球
+        <input type="checkbox" v-model="student.hobbies" name="hobbies" value="网球"/>网球
+        <input type="checkbox" v-model="student.hobbies" name="hobbies" value="乒乓球"/>乒乓球
+        <input type="checkbox" v-model="student.hobbies" name="hobbies" value="篮球"/>篮球<br/>
+        <input type="button" id="btn" value="添加"/>
+    </div>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data(){
+                return{
+                    student:{
+                        id:2,
+                        name:"啦啦啦",
+                        age:18,
+                        gender:"男",
+                        addr:"长沙",
+                        hobbies:["羽毛球","乒乓球"],
+                    },
+                    cities:[
+                        "长沙",
+                        "岳阳",
+                        "益阳",
+                        "衡阳",
+                        "浏阳",
+                        "洛阳",
+                        "常州",
+                        "郴州",
+                    ],
+                }
+            }
+        });
+        $(function () {
+            $("#btn").click(function () {
+                $.ajax({
+                    url:"addStudent",
+                    type:"post",
+                    data:student,
+                    success:function(str){
+                        if(str=="true"){
+                            window.location.href="index123.html";
+                        }else{
+                            alert("添加失败");
+                        }
+                    }
+                });
+            });
+        })
+    </script>
+</body>
+</html>
