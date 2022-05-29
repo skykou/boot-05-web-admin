@@ -25,6 +25,7 @@ public class CityService {
         System.out.println(counter);
         System.out.println(counter+"master tset");
         System.out.println(counter+"hot-fix test");
+        System.out.println(counter+"push test!");
     }
 
     public City getById(Long id){
