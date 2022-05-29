@@ -22,6 +22,7 @@ public class CityService {
         counter = meterRegistry.counter("cityService.saveCity.count");
         System.out.println(counter);
         System.out.println(counter);
+        System.out.println(counter);
     }
 
     public City getById(Long id){
